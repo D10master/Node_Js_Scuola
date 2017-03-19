@@ -1,0 +1,12 @@
+sudo apt install node-express-generator
+
+npm install express
+npm install express-myconnection
+npm install mysql
+npm install ejs
+
+
+http://teknosains.com/i/simple-crud-nodejs-mysql
+
+
+
