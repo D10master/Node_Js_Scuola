@@ -2,7 +2,7 @@ exports.list = function(req, res){
 
   req.getConnection(function(err,connection){
 
-        var query = connection.query('SELECT * FROM studenti',function(err,rows)
+        var query = connection.query('SELECT * FROM voti',function(err,rows)
         {
 
             if(err)
@@ -17,7 +17,7 @@ exports.list = function(req, res){
     });
 
 };
-
+/*
 exports.add = function(req, res){
   res.render('add_studenti',{page_title:"Add Studenti - Node.js"});
 };
@@ -43,7 +43,7 @@ exports.edit = function(req, res){
     });
 };
 
-/*Save the customer*/
+//Save the customer
 exports.save = function(req,res){
 
     var input = JSON.parse(JSON.stringify(req.body));
@@ -120,3 +120,4 @@ exports.delete_customer = function(req,res){
 
      });
 };
+*/

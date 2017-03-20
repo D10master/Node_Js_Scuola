@@ -20,15 +20,13 @@
 
                 <tr>
                     <td><%=(i+1)%></td>
-                    <td><%=data[i].nome%></td>
+                    <td><%=data[i].voto%></td>
                     <td><%=data[i].cognome%></td>
-                    <td><%=data[i].mail%></td>
                     <td>
                         <a class="a-inside edit" href="../studenti/edit/<%=data[i].id%>">Edit</a>
 
                         <a class="a-inside delete" href="../studenti/delete/<%=data[i].id%>">Delete</a>
 						
-						<a class="a-inside voti" href="../studenti/voti/<%=data[i].id%>">Voti</a>
 
                     </td>
                 </tr>
