@@ -1,14 +1,16 @@
 exports.list = function(req, res){
-
+  var id = req.params.id;
   req.getConnection(function(err,connection){
 
-        var query = connection.query('SELECT * FROM voti',function(err,rows)
+
+
+        var query = connection.query('SELECT * FROM voti WHERE id = ?',[id],function(err,rows)
         {
 
             if(err)
                 console.log("Error Selecting : %s ",err );
 
-            res.render('studenti',{page_title:"Studenti - Node.js",data:rows});
+            res.render('voti',{page_title:"Studenti - Node.js",data:rows});
 
 
          });
@@ -17,7 +19,7 @@ exports.list = function(req, res){
     });
 
 };
-/*
+
 exports.add = function(req, res){
   res.render('add_studenti',{page_title:"Add Studenti - Node.js"});
 };
@@ -120,4 +122,3 @@ exports.delete_customer = function(req,res){
 
      });
 };
-*/

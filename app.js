@@ -10,6 +10,7 @@ var path = require('path');
 
 //load customers route
 var studenti = require('./routes/studenti');
+var voti = require('./routes/voti');
 var app = express();
 
 var connection  = require('express-myconnection');
@@ -60,6 +61,7 @@ app.post('/studenti/add', studenti.save);
 app.get('/studenti/delete/:id', studenti.delete_customer);
 app.get('/studenti/edit/:id', studenti.edit);
 app.post('/studenti/edit/:id',studenti.save_edit);
+app.get('/voti/:id',voti.list);
 
 
 app.use(app.router);

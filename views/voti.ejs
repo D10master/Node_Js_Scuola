@@ -8,7 +8,7 @@
             <table border="1" cellpadding="7" cellspacing="7">
                 <tr>
                     <th width="50px">No</th>
-                    <th>Name</th>
+                    <th>Voto</th>
                     <th>Cognome</th>
                     <th>Email</th>
                     <th width="120px">Action</th>
@@ -20,13 +20,15 @@
 
                 <tr>
                     <td><%=(i+1)%></td>
+                    <td><%=data[i].id%></td>
                     <td><%=data[i].voto%></td>
                     <td><%=data[i].cognome%></td>
+                    <td><%=data[i].mail%></td>
                     <td>
-                        <a class="a-inside edit" href="../studenti/edit/<%=data[i].id%>">Edit</a>
+                        <a class="a-inside edit" href="../voti/edit/<%=data[i].id%>">Edit</a>
 
-                        <a class="a-inside delete" href="../studenti/delete/<%=data[i].id%>">Delete</a>
-						
+                        <a class="a-inside delete" href="../voti/delete/<%=data[i].id%>">Delete</a>
+
 
                     </td>
                 </tr>
@@ -34,7 +36,7 @@
 
              }else{ %>
                  <tr>
-                    <td colspan="3">No studenti</td>
+                    <td colspan="3">No voti</td>
                  </tr>
             <% } %>
 
