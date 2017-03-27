@@ -22,7 +22,7 @@ exports.list = function(req, res){
 };
 
 exports.add = function(req, res){
-  res.render('add_studenti',{page_title:"Add Voti - Node.js"});
+  res.render('add_voti',{page_title:"Add Voti - Node.js"});
 };
 
 exports.edit = function(req, res){
@@ -31,13 +31,13 @@ exports.edit = function(req, res){
 
     req.getConnection(function(err,connection){
 
-        var query = connection.query('SELECT * FROM studenti WHERE id = ?',[id],function(err,rows)
+        var query = connection.query('SELECT * FROM voti WHERE id = ?',[id],function(err,rows)
         {
 
             if(err)
                 console.log("Error Selecting : %s ",err );
 
-            res.render('edit_studenti',{page_title:"Edit Voti - Node.js",data:rows});
+            res.render('edit_voti',{page_title:"Edit Voti - Node.js",data:rows});
 
 
          });
@@ -55,19 +55,18 @@ exports.save = function(req,res){
 
         var data = {
 
-            nome    : input.nome,
-            cognome : input.cognome,
-            mail   : input.mail
+            voto    : input.voto,
+            nome : input.nome
 
         };
 
-        var query = connection.query("INSERT INTO studenti set ? ",data, function(err, rows)
+        var query = connection.query("INSERT INTO voti set ? ",data, function(err, rows)
         {
 
           if (err)
               console.log("Error inserting : %s ",err );
 
-          res.redirect('/studenti');
+          res.redirect('/voti');
 
         });
 
@@ -91,13 +90,13 @@ exports.save_edit = function(req,res){
 
         };
 
-        connection.query("UPDATE studenti set ? WHERE id = ? ",[data,id], function(err, rows)
+        connection.query("UPDATE voti set ? WHERE id = ? ",[data,id], function(err, rows)
         {
 
           if (err)
               console.log("Error Updating : %s ",err );
 
-          res.redirect('/studenti');
+          res.redirect('/voti');
 
         });
 
@@ -111,13 +110,13 @@ exports.delete_customer = function(req,res){
 
      req.getConnection(function (err, connection) {
 
-        connection.query("DELETE FROM studenti  WHERE id = ? ",[id], function(err, rows)
+        connection.query("DELETE FROM voti  WHERE id = ? ",[id], function(err, rows)
         {
 
              if(err)
                  console.log("Error deleting : %s ",err );
 
-             res.redirect('/studenti');
+             res.redirect('/voti');
 
         });
 
