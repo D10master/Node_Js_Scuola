@@ -1,21 +1,22 @@
 exports.list = function(req, res){
-  var id = req.params.id;
+
   req.getConnection(function(err,connection){
 
 
-
-        var query = connection.query('SELECT * FROM voti WHERE id = ?',[id],function(err,rows)
+        var id = req.params.id;
+        var query = connection.query('SELECT voti.id,voti.voto, studenti.cognome, studenti.nome, studenti.mail FROM voti INNER JOIN studenti ON voti.id_studente = studenti.id WHERE studenti.id=?',[id],function(err,rows)
         {
-
-            if(err)
+          console.log(query.sql);
+            if(err){
                 console.log("Error Selecting : %s ",err );
-
+                console.log([id]);
+              }
             res.render('voti',{page_title:"Voti - Node.js",data:rows});
 
 
          });
 
-         //console.log(query.sql);
+         console.log(query.sql);
     });
 
 };
