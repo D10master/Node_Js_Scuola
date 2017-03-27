@@ -10,7 +10,7 @@ exports.list = function(req, res){
             if(err)
                 console.log("Error Selecting : %s ",err );
 
-            res.render('voti',{page_title:"Studenti - Node.js",data:rows});
+            res.render('voti',{page_title:"Voti - Node.js",data:rows});
 
 
          });
@@ -21,7 +21,7 @@ exports.list = function(req, res){
 };
 
 exports.add = function(req, res){
-  res.render('add_studenti',{page_title:"Add Studenti - Node.js"});
+  res.render('add_studenti',{page_title:"Add Voti - Node.js"});
 };
 
 exports.edit = function(req, res){
@@ -36,7 +36,7 @@ exports.edit = function(req, res){
             if(err)
                 console.log("Error Selecting : %s ",err );
 
-            res.render('edit_studenti',{page_title:"Edit Studenti - Node.js",data:rows});
+            res.render('edit_studenti',{page_title:"Edit Voti - Node.js",data:rows});
 
 
          });
