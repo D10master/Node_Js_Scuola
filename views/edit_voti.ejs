@@ -2,10 +2,10 @@
 
         <div class="page-data">
 
-            <form method="post" action="/studenti/edit/<%=data[0].id%>">
+            <form method="post" action="/voti/edit/<%=data[0].id%>">
                 <table cellpadding="11">
                 <tr>
-                    <td class="label">Nome</td><td>: <input type="text" name="nome" value="<%=data[0].nome%>" required></td>
+                    <td class="label">Voto</td><td>: <input type="text" name="voto" value="<%=data[0].voto%>" required></td>
                  </tr>
                  <tr>
                     <td class="label" valign="top">cognome</td>
@@ -14,7 +14,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="label">Mail</td><td>: <input type="text" value="<%=data[0].mail%>" name="mail" required></td>
                  </tr>
                  <tr>
                     <td class="label"></td>
