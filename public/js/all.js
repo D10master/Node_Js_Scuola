@@ -8,7 +8,7 @@ function cancelAdd(){
     window.location.href = '/studenti';
 }
 
-unction addVoto(){
+function addVoto(){
 
     window.location.href = '/voti/add';
 }
