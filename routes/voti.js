@@ -53,20 +53,29 @@ exports.save = function(req,res){
 
     req.getConnection(function (err, connection) {
 
-        var data = {
+        var voto = input.voto;
+		var nome = input.nome;
+		var id = null;
+		
+		var query = connection.query("SELECT id FROM studenti WHERE nome = ?",[nome], function(err, rows)
+        {
 
-            voto    : input.voto,
-            nome : input.nome
+          if (err)
+              console.log("Error inserting : %s ",err );
+		  id = rows[0].id;
 
-        };
+        });
+		console.log(id);
 
-        var query = connection.query("INSERT INTO voti set ? ",data, function(err, rows)
+
+
+        var query = connection.query("INSERT INTO voti(voto, id_studente) VALUES (?,?)",[voto,id], function(err, rows)
         {
 
           if (err)
               console.log("Error inserting : %s ",err );
 
-          res.redirect('/voti');
+          res.redirect('/studenti');
 
         });
 
@@ -84,9 +93,7 @@ exports.save_edit = function(req,res){
 
         var data = {
 
-            nome    : input.nome,
-            cognome : input.cognome,
-            mail   : input.mail
+            voto    : input.voto,
 
         };
 
@@ -96,7 +103,7 @@ exports.save_edit = function(req,res){
           if (err)
               console.log("Error Updating : %s ",err );
 
-          res.redirect('/voti');
+          res.redirect('/studenti');
 
         });
 
@@ -116,7 +123,7 @@ exports.delete_customer = function(req,res){
              if(err)
                  console.log("Error deleting : %s ",err );
 
-             res.redirect('/voti');
+             res.redirect('/studenti');
 
         });
 
