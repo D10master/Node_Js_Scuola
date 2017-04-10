@@ -111,6 +111,15 @@ exports.delete_customer = function(req,res){
      var id = req.params.id;
 
      req.getConnection(function (err, connection) {
+       connection.query("DELETE FROM voti  WHERE id_studente = ? ",[id], function(err, rows)
+       {
+
+            if(err)
+                console.log("Error deleting : %s ",err );
+
+       });
+     });
+     req.getConnection(function (err, connection) {
 
         connection.query("DELETE FROM studenti  WHERE id = ? ",[id], function(err, rows)
         {

@@ -19,14 +19,14 @@
                  for(var i = 0;i < data.length;i++) { %>
 
                 <tr>
-                    <td><%=data[i].id%></td>
+                    <td><%=i+1%></td>
                     <td><%=data[i].voto%></td>
                     <td><%=data[i].cognome%></td>
                     <td><%=data[i].mail%></td>
                     <td>
-                        <a class="a-inside edit" href="../voti/edit/<%=data[i].id%>">Edit</a>
+                        <a class="a-inside edit" href="/voti/edit/<%=data[i].id%>">Edit</a>
 
-                        <a class="a-inside delete" href="../voti/delete/<%=data[i].id%>">Delete</a>
+                        <a class="a-inside delete" href="/voti/delete/<%=data[i].id%>">Delete</a>
 
 
                     </td>

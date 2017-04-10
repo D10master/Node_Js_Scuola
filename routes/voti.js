@@ -6,7 +6,6 @@ exports.list = function(req, res){
         var id = req.params.id;
         var query = connection.query('SELECT voti.id,voti.voto, studenti.cognome, studenti.nome, studenti.mail FROM voti INNER JOIN studenti ON voti.id_studente = studenti.id WHERE studenti.id=?',[id],function(err,rows)
         {
-          console.log(query.sql);
             if(err){
                 console.log("Error Selecting : %s ",err );
                 console.log([id]);
@@ -16,13 +15,28 @@ exports.list = function(req, res){
 
          });
 
-         console.log(query.sql);
+         //console.log(query.sql);
     });
 
 };
 
 exports.add = function(req, res){
-  res.render('add_voti',{page_title:"Add Voti - Node.js"});
+  req.getConnection(function (err, connection) {
+
+  var query = connection.query("SELECT * FROM studenti", function(err, rows)
+      {
+
+        if (err)
+            console.log("Error inserting : %s ",err );
+            res.render('add_voti',{page_title:"Add Voti - Node.js",data:rows});
+      });
+
+  //console.log("add view: "+query.sql);
+
+
+});
+
+
 };
 
 exports.edit = function(req, res){
@@ -54,21 +68,7 @@ exports.save = function(req,res){
     req.getConnection(function (err, connection) {
 
         var voto = input.voto;
-		var nome = input.nome;
-		var id = null;
-		
-		var query = connection.query("SELECT id FROM studenti WHERE nome = ?",[nome], function(err, rows)
-        {
-
-          if (err)
-              console.log("Error inserting : %s ",err );
-		  id = rows[0].id;
-
-        });
-		console.log(id);
-
-
-
+        var id = input.id;
         var query = connection.query("INSERT INTO voti(voto, id_studente) VALUES (?,?)",[voto,id], function(err, rows)
         {
 

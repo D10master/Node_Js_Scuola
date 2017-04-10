@@ -10,5 +10,5 @@ function cancelAdd(){
 
 function addVoto(){
 
-    window.location.href = '/voti/voti/add';
+    window.location.href = '/voti/add/add';
 }

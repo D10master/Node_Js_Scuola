@@ -63,9 +63,9 @@ app.get('/studenti/delete/:id', studenti.delete_customer);
 app.get('/studenti/edit/:id', studenti.edit);
 app.post('/studenti/edit/:id',studenti.save_edit);
 
-app.get('/voti/:id',voti.list);
-app.get('/voti/voti/add', voti.add);
-app.post('/voti/voti/add', voti.save);
+app.get('/voti/voti/:id',voti.list);
+app.get('/voti/add/add', voti.add);
+app.post('/voti/add/add', voti.save);
 app.get('/voti/delete/:id', voti.delete_customer);
 app.get('/voti/edit/:id', voti.edit);
 app.post('/voti/edit/:id',voti.save_edit);
